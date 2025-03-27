@@ -257,7 +257,7 @@ addEventListener("DOMContentLoaded", (event) => {
     shot_clock_container.appendChild(frame);
 
     
-    const period = 10;
+    const period = 100;
     let game_time = 10*60*1000/period;
     let shot_time = 24*1000/period;
     let buzzer_time = 0;
