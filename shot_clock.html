@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shot clock</title>
+
+    <link rel="stylesheet" href="shot_clock.css">
+    <script src="shot_clock.js"></script>
+</head>
+<body>
+    <main>
+        <div class="shot-clock-container"></div>
+        <div class="controls-container" id="main-controls">
+            <div class="controls-row">
+                <button class="button-big color-yellow" id="start-stop-time-button">Start time</button>
+            </div>
+            <div class="controls-row">
+                <button class="color-red" id="24s-button">24 s</button>
+                <button class="color-red" id="14s-button">14 s</button>
+                <button class="color-red" id="24s-off-button">Off</button>
+            </div>
+            <div class="controls-row mt-2">
+                <button class="color-blue button-mid" id="time-out-button">Time-out</button>
+                <button class="color-blue button-mid" id="periods-button">Periods</button>
+                <button class="color-blue button-mid" id="set-time-button">Set time</button>
+            </div>
+        </div>
+        <div class="controls-container d-none" id="periods-controls">
+            <div class="controls-row">
+                <button class="button color-yellow" id="set-15-button">15:00</button>
+                <button class="button color-yellow" id="set-2-button">2:00</button>
+            </div>
+            <div class="controls-row">
+                <button class="button color-yellow" id="set-10-button">10:00</button>
+                <button class="button color-yellow" id="set-5-button">5:00</button>
+            </div>
+            <div class="controls-row mt-2">
+                <button class="button color-blue" id="periods-back-button">Back</button>
+            </div>
+        </div>
+        <div class="controls-container d-none" id="set-time-controls">
+            <div class="controls-row">
+                <button class="button color-yellow" id="add-10-m-game-button">+ 10 m</button>
+                <button class="button color-yellow" id="add-1-m-game-button">+ 1 m</button>
+                <button class="button color-yellow" id="add-10-s-game-button">+ 10 s</button>
+                <button class="button color-yellow" id="add-1-s-game-button">+ 1 s</button>
+                <button class="button color-yellow" id="add-1-t-game-button">+ 0.1 s</button>
+            </div>
+            <div class="controls-row">
+                <button class="button color-yellow" id="sub-10-m-game-button">- 10 m</button>
+                <button class="button color-yellow" id="sub-1-m-game-button">- 1 m</button>
+                <button class="button color-yellow" id="sub-10-s-game-button">- 10 s</button>
+                <button class="button color-yellow" id="sub-1-s-game-button">- 1 s</button>
+                <button class="button color-yellow" id="sub-1-t-game-button">- 0.1 s</button>
+            </div>
+            <div class="controls-row">
+                <button class="button color-red" id="add-10-s-shot-button">+ 10 s</button>
+                <button class="button color-red" id="add-1-s-shot-button">+ 1 s</button>
+                <button class="button color-red" id="add-1-t-shot-button">+ 0.1 s</button>
+            </div>
+            <div class="controls-row">
+                <button class="button color-red" id="sub-10-s-shot-button">- 10 s</button>
+                <button class="button color-red" id="sub-1-s-shot-button">- 1 s</button>
+                <button class="button color-red" id="sub-1-t-shot-button">- 0.1 s</button>
+            </div>
+            <div class="controls-row mt-1">
+                <button class="button color-blue" id="set-time-back-button">Back</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
