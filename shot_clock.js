@@ -258,8 +258,8 @@ addEventListener("DOMContentLoaded", (event) => {
 
     
     const period = 10;
-    let game_time = 10*60*1000/period;
-    let shot_time = 24*1000/period;
+    let game_time = 10*60*1000;
+    let shot_time = 24*1000;
     let buzzer_time = 0;
 
     let game_clock_running = true;
@@ -307,8 +307,8 @@ addEventListener("DOMContentLoaded", (event) => {
         if(timeout)
             return;
 
-        if(game_time > 24*1000/period) {
-            shot_time = 24*1000/period;
+        if(game_time > 24*1000) {
+            shot_time = 24*1000;
             shot_clock_running = true;
             show_shot_clock = true;
         } else {
@@ -324,8 +324,8 @@ addEventListener("DOMContentLoaded", (event) => {
         if(timeout)
             return;
         
-        if(game_time > 14*1000/period) {
-            shot_time = 14*1000/period;
+        if(game_time > 14*1000) {
+            shot_time = 14*1000;
             shot_clock_running = true;
             show_shot_clock = true;
         } else {
@@ -355,7 +355,7 @@ addEventListener("DOMContentLoaded", (event) => {
             timout_buttom.classList.remove("active");
             game_clock_running = true;
             shot_clock_running = true;
-            shot_time = 24*1000/period;
+            shot_time = 24*1000;
             time_running = false;
             start_stop_time_button.innerHTML = "Start time";
         } else {
@@ -365,7 +365,7 @@ addEventListener("DOMContentLoaded", (event) => {
             timout_buttom.classList.add("active");
             game_clock_running = false;
             shot_clock_running = true;
-            shot_time = 60*1000/period;
+            shot_time = 60*1000;
             time_running = true;
             start_stop_time_button.innerHTML = "Stop time";
         }
@@ -388,27 +388,27 @@ addEventListener("DOMContentLoaded", (event) => {
     });
 
     document.getElementById("set-15-button").addEventListener("click", (e) => {
-        game_time = 15*60*1000/period;
+        game_time = 15*60*1000;
         shot_clock_running = false;
         show_shot_clock = false;
     });
 
     document.getElementById("set-2-button").addEventListener("click", (e) => {
-        game_time = 2*60*1000/period;
+        game_time = 2*60*1000;
         shot_clock_running = false;
         show_shot_clock = false;
     });
 
     document.getElementById("set-10-button").addEventListener("click", (e) => {
-        game_time = 10*60*1000/period;
-        shot_time = 24*1000/period;
+        game_time = 10*60*1000;
+        shot_time = 24*1000;
         shot_clock_running = true;
         show_shot_clock = true;
     });
 
     document.getElementById("set-5-button").addEventListener("click", (e) => {
-        game_time = 5*60*1000/period;
-        shot_time = 24*1000/period;
+        game_time = 5*60*1000;
+        shot_time = 24*1000;
         shot_clock_running = true;
         show_shot_clock = true;
     });
@@ -419,160 +419,160 @@ addEventListener("DOMContentLoaded", (event) => {
     });
 
     document.getElementById("add-10-m-game-button").addEventListener("click", (e) => {
-        if(game_time + 10*60*1000/period < 100*60*1000/period)
-            game_time += 10*60*1000/period;
+        if(game_time + 10*60*1000 < 100*60*1000)
+            game_time += 10*60*1000;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("add-1-m-game-button").addEventListener("click", (e) => {
-        if(game_time + 60*1000/period < 100*60*1000/period)
-            game_time += 60*1000/period;
+        if(game_time + 60*1000 < 100*60*1000)
+            game_time += 60*1000;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("add-10-s-game-button").addEventListener("click", (e) => {
-        if(game_time + 10*1000/period < 100*60*1000/period)
-            game_time += 10*1000/period;
+        if(game_time + 10*1000 < 100*60*1000)
+            game_time += 10*1000;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("add-1-s-game-button").addEventListener("click", (e) => {
-        if(game_time + 1000/period < 100*60*1000/period)
-            game_time += 1000/period;
+        if(game_time + 1000 < 100*60*1000)
+            game_time += 1000;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("add-1-t-game-button").addEventListener("click", (e) => {
-        if(game_time + 100/period < 100*60*1000/period)
-            game_time += 100/period;
+        if(game_time + 100 < 100*60*1000)
+            game_time += 100;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("sub-10-m-game-button").addEventListener("click", (e) => {
-        if(game_time - 10*60*1000/period >= 0)
-            game_time -= 10*60*1000/period;
+        if(game_time - 10*60*1000 >= 0)
+            game_time -= 10*60*1000;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("sub-1-m-game-button").addEventListener("click", (e) => {
-        if(game_time - 60*1000/period >= 0)
-            game_time -= 60*1000/period;
+        if(game_time - 60*1000 >= 0)
+            game_time -= 60*1000;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("sub-10-s-game-button").addEventListener("click", (e) => {
-        if(game_time - 10*1000/period >= 0)
-            game_time -= 10*1000/period;
+        if(game_time - 10*1000 >= 0)
+            game_time -= 10*1000;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("sub-1-s-game-button").addEventListener("click", (e) => {
-        if(game_time - 1000/period >= 0)
-            game_time -= 1000/period;
+        if(game_time - 1000 >= 0)
+            game_time -= 1000;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("sub-1-t-game-button").addEventListener("click", (e) => {
-        if(game_time - 100/period >= 0)
-            game_time -= 100/period;
+        if(game_time - 100 >= 0)
+            game_time -= 100;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("add-10-s-shot-button").addEventListener("click", (e) => {
-        if(shot_time + 10*1000/period < 100*1000/period)
-            shot_time += 10*1000/period;
+        if(shot_time + 10*1000 < 100*1000)
+            shot_time += 10*1000;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("add-1-s-shot-button").addEventListener("click", (e) => {
-        if(shot_time + 1000/period < 100*1000/period)
-            shot_time += 1000/period;
+        if(shot_time + 1000 < 100*1000)
+            shot_time += 1000;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("add-1-t-shot-button").addEventListener("click", (e) => {
-        if(shot_time + 100/period < 100*1000/period)
-            shot_time += 100/period;
+        if(shot_time + 100 < 100*1000)
+            shot_time += 100;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("sub-10-s-shot-button").addEventListener("click", (e) => {
-        if(shot_time - 10*1000/period >= 0)
-            shot_time -= 10*1000/period;
+        if(shot_time - 10*1000 >= 0)
+            shot_time -= 10*1000;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("sub-1-s-shot-button").addEventListener("click", (e) => {
-        if(shot_time - 1000/period >= 0)
-            shot_time -= 1000/period;
+        if(shot_time - 1000 >= 0)
+            shot_time -= 1000;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
     });
 
     document.getElementById("sub-1-t-shot-button").addEventListener("click", (e) => {
-        if(shot_time - 100/period >= 0)
-            shot_time -= 100/period;
+        if(shot_time - 100 >= 0)
+            shot_time -= 100;
 
-        if(game_time < shot_time)
+        if(!show_shot_clock || game_time < shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
@@ -591,14 +591,23 @@ addEventListener("DOMContentLoaded", (event) => {
     }
     
     function update() {
-        if(buzzer_time > 0)
-            buzzer_time -= 1;
+        let current_time = performance.now();
+        let ellapsed_millis = current_time - prev_time;
+        prev_time = current_time;
+
+        if(buzzer_time > 0) {
+            buzzer_time -= ellapsed_millis;
+            if(buzzer_time < 0)
+                buzzer_time = 0;
+        }
 
         if(time_running && game_clock_running && game_time > 0) {
-            game_time -= 1;
+            game_time -= ellapsed_millis;
+            if(game_time < 0)
+                game_time = 0;
 
             if(game_time == 0) {
-                buzzer_time = 4 * 1000/period;
+                buzzer_time = 4 * 1000;
                 play_buzzer_4();
                 time_running = false;
                 start_stop_time_button.innerHTML = "Start time";
@@ -606,31 +615,33 @@ addEventListener("DOMContentLoaded", (event) => {
         }
 
         if(time_running && shot_clock_running && shot_time > 0) {
-            shot_time -= 1;
+            shot_time -= ellapsed_millis;
+            if(shot_time < 0)
+                shot_time = 0;
 
             if(shot_time == 0) {
                 if(!timeout)
-                    buzzer_time = 2 * 1000/period;
+                    buzzer_time = 2 * 1000;
                 play_buzzer_2();
             }
 
-            if(timeout && shot_time == 10*1000/period)
+            if(timeout && shot_time == 10*1000)
                 play_buzzer_2();
         }
 
-        let game_time_tenths = Math.ceil(game_time / (1000/period) * 10);
+        let game_time_tenths = Math.ceil(game_time / (1000) * 10);
         let game_time_minutes = Math.floor(game_time_tenths / 600);
         game_time_tenths -= game_time_minutes * 600;
         let game_time_seconds = Math.floor(game_time_tenths / 10);
         game_time_tenths -= game_time_seconds * 10;
 
         if(timeout)
-            shot_time += 900/period;
-        let shot_time_tenths = Math.ceil(shot_time / (1000/period) * 10);
+            shot_time += 900;
+        let shot_time_tenths = Math.ceil(shot_time / (1000) * 10);
         let shot_time_seconds = Math.floor(shot_time_tenths / 10);
         shot_time_tenths -= shot_time_seconds * 10;
         if(timeout)
-            shot_time -= 900/period;
+            shot_time -= 900;
 
         if(show_game_clock && game_time_minutes < 100) {
             if(game_time_minutes == 0) {
@@ -705,5 +716,6 @@ addEventListener("DOMContentLoaded", (event) => {
             frame.classList.remove("frame-on");
     }
     
+    let prev_time = performance.now();
     setInterval(update, period);
 });
