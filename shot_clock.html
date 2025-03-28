@@ -7,6 +7,9 @@
 
     <link rel="stylesheet" href="shot_clock.css">
     <script src="shot_clock.js"></script>
+
+    <audio id="buzzer_2" src="buzzer_2.wav"></audio>
+    <audio id="buzzer_4" src="buzzer_4.wav"></audio>
 </head>
 <body>
     <main>
@@ -22,18 +25,18 @@
             </div>
             <div class="controls-row mt-2">
                 <button class="color-blue button-mid" id="time-out-button">Time-out</button>
-                <button class="color-blue button-mid" id="periods-button">Periods</button>
+                <button class="color-blue button-mid" id="periods-button">Presets</button>
                 <button class="color-blue button-mid" id="set-time-button">Set time</button>
             </div>
         </div>
         <div class="controls-container d-none" id="periods-controls">
             <div class="controls-row">
-                <button class="button color-yellow" id="set-15-button">15:00</button>
-                <button class="button color-yellow" id="set-2-button">2:00</button>
-            </div>
-            <div class="controls-row">
                 <button class="button color-yellow" id="set-10-button">10:00</button>
                 <button class="button color-yellow" id="set-5-button">5:00</button>
+            </div>
+            <div class="controls-row">
+                <button class="button color-yellow" id="set-2-button">2:00</button>
+                <button class="button color-yellow" id="set-15-button">15:00</button>
             </div>
             <div class="controls-row mt-2">
                 <button class="button color-blue" id="periods-back-button">Back</button>
