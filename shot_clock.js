@@ -284,13 +284,13 @@ addEventListener("DOMContentLoaded", (event) => {
         buzzer_2.play();
     }
 
-    function stop_buzzer_2() {
-        buzzer_2.pause();
-    }
-
     function play_buzzer_4() {
         buzzer_4.currentTime = 0;
         buzzer_4.play();
+    }
+
+    function stop_buzzer_4() {
+        buzzer_4.pause();
     }
 
     const start_stop_time_button = document.getElementById("start-stop-time-button");
@@ -318,7 +318,7 @@ addEventListener("DOMContentLoaded", (event) => {
         }
 
         buzzer_time = 0;
-        stop_buzzer_2();
+        stop_buzzer_4();
     });
 
     document.getElementById("14s-button").addEventListener("click", (e) => {
@@ -335,7 +335,7 @@ addEventListener("DOMContentLoaded", (event) => {
         }
 
         buzzer_time = 0;
-        stop_buzzer_2();
+        stop_buzzer_4();
     });
 
     document.getElementById("24s-off-button").addEventListener("click", (e) => {
@@ -346,7 +346,7 @@ addEventListener("DOMContentLoaded", (event) => {
         show_shot_clock = false;
 
         buzzer_time = 0;
-        stop_buzzer_2();
+        stop_buzzer_4();
     });
 
     const timout_buttom = document.getElementById("time-out-button");
@@ -694,7 +694,28 @@ addEventListener("DOMContentLoaded", (event) => {
         else
             frame.classList.remove("frame-on");
     }
+
     
     let prev_time = performance.now();
     setInterval(update, period);
+
+
+    if ('WakeLock' in window) {
+        let wakeLock = null;
+      
+        const requestWakeLock = async () => {
+            try {
+                wakeLock = await navigator.wakeLock.request('screen');
+                console.log("Wake Lock is active");
+            } catch (err) {}
+        };
+      
+        requestWakeLock();
+      
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'hidden') {
+            wakeLock?.release();
+          }
+        });
+      }
 });
