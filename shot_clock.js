@@ -706,7 +706,6 @@ addEventListener("DOMContentLoaded", (event) => {
         const requestWakeLock = async () => {
             try {
                 wakeLock = await navigator.wakeLock.request('screen');
-                console.log("Wake Lock is active");
             } catch (err) {}
         };
       
