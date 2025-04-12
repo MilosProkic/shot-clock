@@ -17,6 +17,9 @@
         <div class="controls-container" id="main-controls">
             <div class="controls-row">
                 <button class="button-big color-yellow" id="start-stop-time-button">Start time</button>
+                <button class="color-yellow no-pad" id="horn-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-volume-2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                </button>
             </div>
             <div class="controls-row">
                 <button class="color-red" id="24s-button">24 s</button>
@@ -26,13 +29,13 @@
             <div class="controls-row mt-2">
                 <button class="color-blue button-mid" id="time-out-button">Time-out</button>
                 <button class="color-blue button-mid" id="periods-button">Presets</button>
-                <button class="color-blue button-mid" id="set-time-button">Set time</button>
+                <button class="color-blue button-mid" id="set-time-button">Settings</button>
             </div>
         </div>
         <div class="controls-container d-none" id="periods-controls">
             <div class="controls-row">
-                <button class="button color-yellow" id="set-10-button">10:00</button>
-                <button class="button color-yellow" id="set-5-button">5:00</button>
+                <button class="button color-red" id="set-10-button">10:00</button>
+                <button class="button color-red" id="set-5-button">5:00</button>
             </div>
             <div class="controls-row">
                 <button class="button color-yellow" id="set-2-button">2:00</button>
@@ -43,6 +46,8 @@
             </div>
         </div>
         <div class="controls-container d-none" id="set-time-controls">
+            <div class="controls-row time-values" id="time-values">
+            </div>
             <div class="controls-row">
                 <button class="button color-yellow" id="add-10-m-game-button">+ 10 m</button>
                 <button class="button color-yellow" id="add-1-m-game-button">+ 1 m</button>
@@ -58,14 +63,26 @@
                 <button class="button color-yellow" id="sub-1-t-game-button">- 0.1 s</button>
             </div>
             <div class="controls-row">
-                <button class="button color-red" id="add-10-s-shot-button">+ 10 s</button>
-                <button class="button color-red" id="add-1-s-shot-button">+ 1 s</button>
-                <button class="button color-red" id="add-1-t-shot-button">+ 0.1 s</button>
-            </div>
-            <div class="controls-row">
-                <button class="button color-red" id="sub-10-s-shot-button">- 10 s</button>
-                <button class="button color-red" id="sub-1-s-shot-button">- 1 s</button>
-                <button class="button color-red" id="sub-1-t-shot-button">- 0.1 s</button>
+                <div class="controls-col">
+                    <div class="controls-row">
+                        <button class="button color-red" id="add-10-s-shot-button">+ 10 s</button>
+                        <button class="button color-red" id="add-1-s-shot-button">+ 1 s</button>
+                        <button class="button color-red" id="add-1-t-shot-button">+ 0.1 s</button>
+                    </div>
+                    <div class="controls-row">
+                        <button class="button color-red" id="sub-10-s-shot-button">- 10 s</button>
+                        <button class="button color-red" id="sub-1-s-shot-button">- 1 s</button>
+                        <button class="button color-red" id="sub-1-t-shot-button">- 0.1 s</button>
+                    </div>
+                </div>
+                <div class="controls-col ml-1">
+                    <div class="controls-row">
+                        <button class="button color-yellow" id="sound-button">
+                            <svg id="turn-on-sound-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                            <svg id="turn-off-sound-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell-off d-none"><path d="M13.73 21a2 2 0 0 1-3.46 0"/><path d="M18.63 13A17.89 17.89 0 0 1 18 8"/><path d="M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h14"/><path d="M18 8a6 6 0 0 0-9.33-5"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="controls-row mt-1">
                 <button class="button color-blue" id="set-time-back-button">Back</button>
