@@ -272,6 +272,8 @@ addEventListener("DOMContentLoaded", (event) => {
     let timeout = false;
     let timeout_last_10 = false;
 
+    let sound = true;
+
     const main_controls = document.getElementById("main-controls");
     const periods_controls = document.getElementById("periods-controls");
     const set_time_controls = document.getElementById("set-time-controls");
@@ -280,11 +282,17 @@ addEventListener("DOMContentLoaded", (event) => {
     const buzzer_4 = document.getElementById("buzzer_4");
 
     function play_buzzer_2() {
+        if(!sound)
+            return;
+
         buzzer_2.currentTime = 0;
         buzzer_2.play();
     }
 
     function play_buzzer_4() {
+        if(!sound)
+            return;
+        
         buzzer_4.currentTime = 0;
         buzzer_4.play();
     }
@@ -302,6 +310,11 @@ addEventListener("DOMContentLoaded", (event) => {
             time_running = true;
             start_stop_time_button.innerHTML = "Stop time";
         }
+    });
+
+    const horn_button = document.getElementById("horn-button");
+    horn_button.addEventListener("click", (e) => {
+        play_buzzer_4();
     });
     
     document.getElementById("24s-button").addEventListener("click", (e) => {
@@ -386,9 +399,34 @@ addEventListener("DOMContentLoaded", (event) => {
         periods_controls.classList.remove("d-none");
     });
 
+    const time_values = document.getElementById("time-values");
+
+    function update_time_values() {
+        let game_time_tenths = Math.ceil(game_time / (1000) * 10);
+        let game_time_minutes = Math.floor(game_time_tenths / 600);
+        game_time_tenths -= game_time_minutes * 600;
+        let game_time_seconds = Math.floor(game_time_tenths / 10);
+        game_time_tenths -= game_time_seconds * 10;
+
+        str = `<span class="text-yellow mr-3">${game_time_minutes}:`;
+        if(game_time_seconds < 10)
+            str += "0";
+        str += `${game_time_seconds}<small>.${game_time_tenths}</small></span>`;
+
+        let shot_time_tenths = Math.ceil(shot_time / (1000) * 10);
+        let shot_time_seconds = Math.floor(shot_time_tenths / 10);
+        shot_time_tenths -= shot_time_seconds * 10;
+
+        str += `<span class="text-red">${shot_time_seconds}<small>.${shot_time_tenths}</small></span>`;
+
+        time_values.innerHTML = str;
+    }
+
     document.getElementById("set-time-button").addEventListener("click", (e) => {
         if(time_running)
             return;
+
+        update_time_values();
 
         main_controls.classList.add("d-none");
         set_time_controls.classList.remove("d-none");
@@ -426,7 +464,7 @@ addEventListener("DOMContentLoaded", (event) => {
     });
 
     function after_set_time_clean() {
-        if(!timeout && game_time < shot_time)
+        if(!timeout && game_time <= shot_time)
             show_shot_clock = false;
         else
             show_shot_clock = true;
@@ -437,6 +475,8 @@ addEventListener("DOMContentLoaded", (event) => {
             else
                 timeout_last_10 = false;
         }
+
+        update_time_values();
     }
 
     document.getElementById("add-10-m-game-button").addEventListener("click", (e) => {
@@ -503,8 +543,9 @@ addEventListener("DOMContentLoaded", (event) => {
     });
 
     document.getElementById("sub-1-t-game-button").addEventListener("click", (e) => {
-        if(game_time - 100 >= 0)
-            game_time -= 100;
+        game_time -= 100;
+        if(game_time < 0)
+            game_time = 0;
 
         after_set_time_clean();
     });
@@ -545,10 +586,27 @@ addEventListener("DOMContentLoaded", (event) => {
     });
 
     document.getElementById("sub-1-t-shot-button").addEventListener("click", (e) => {
-        if(shot_time - 100 >= 0)
-            shot_time -= 100;
+        shot_time -= 100;
+        if(shot_time < 0)
+            shot_time = 0;
 
         after_set_time_clean();
+    });
+
+    const turn_off_sound_icon = document.getElementById("turn-off-sound-icon");
+    const turn_on_sound_icon = document.getElementById("turn-on-sound-icon");
+    document.getElementById("sound-button").addEventListener("click", (e) => {
+        if(sound) {
+            sound = false;
+            turn_on_sound_icon.classList.add("d-none");
+            turn_off_sound_icon.classList.remove("d-none");
+            horn_button.classList.add("d-none");
+        } else {
+            sound = true;
+            turn_on_sound_icon.classList.remove("d-none");
+            turn_off_sound_icon.classList.add("d-none");
+            horn_button.classList.remove("d-none");
+        }
     });
 
     document.getElementById("set-time-back-button").addEventListener("click", (e) => {
@@ -594,7 +652,7 @@ addEventListener("DOMContentLoaded", (event) => {
 
             if(shot_time == 0) {
                 if(!timeout)
-                    buzzer_time = 2 * 1000;
+                    buzzer_time = 4 * 1000;
                 if(timeout) {
                     time_running = false;
                     start_stop_time_button.innerHTML = "Start time";
