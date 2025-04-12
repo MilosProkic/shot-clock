@@ -73,6 +73,12 @@ main {
     justify-content: center;
 }
 
+.controls-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 button {
     padding: calc(0.75*var(--rem));
     font-size: calc(1.25*var(--rem));
@@ -107,6 +113,10 @@ button:active, button.active {
     margin-top: calc(1*var(--rem));
 }
 
+.ml-1 {
+    margin-left: calc(1.25*var(--rem));
+}
+
 .d-none {
     display: none;
 }
@@ -116,4 +126,32 @@ button:active, button.active {
     padding: calc(0.5*var(--rem)) calc(0.25*var(--rem));
     margin: calc(0.25*var(--rem));
     width: calc(4*var(--rem));
+}
+
+.feather {
+    width: calc(1.75*var(--rem));
+    height: calc(1.75*var(--rem));
+}
+
+.no-pad {
+    padding: 0;
+}
+
+.time-values {
+    font-size: calc(1*var(--rem));
+    margin-top: calc(-1*var(--rem));
+    margin-bottom:calc(0.5*var(--rem));
+    font-family: Monaco, Menlo, "Ubuntu Mono", "Droid Sans Mono", Consolas, monospace;
+}
+
+.text-yellow {
+    color: yellow;
+}
+
+.text-red {
+    color: red;
+}
+
+.mr-3 {
+    margin-right: calc(3*var(--rem));
 }
